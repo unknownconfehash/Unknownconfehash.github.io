@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secret Message</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    /* Envelope */
+    .envelope {
+      width: 260px;
+      height: 170px;
+      background: #c0392b;
+      position: relative;
+      cursor: pointer;
+      border-radius: 6px;
+      box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+      transition: transform 0.3s;
+    }
+
+    .envelope:hover {
+      transform: scale(1.05);
+    }
+
+    /* Flap */
+    .flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 130px solid transparent;
+      border-right: 130px solid transparent;
+      border-top: 85px solid #e74c3c;
+      transform-origin: top;
+      transition: transform 0.7s;
+      z-index: 3;
+    }
+
+    /* Bottom */
+    .bottom {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 85px;
+      background: #b83224;
+      z-index: 1;
+    }
+
+    /* Letter */
+    .letter {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 240px;
+      height: 220px;
+      background: white;
+      padding: 15px;
+      box-sizing: border-box;
+      border-radius: 5px;
+      font-size: 14px;
+      line-height: 1.5;
+      transform: translateY(120px);
+      opacity: 0;
+      overflow-y: auto;
+      transition: transform 0.8s, opacity 0.8s;
+      z-index: 2;
+    }
+
+    /* Open Effect */
+    .open .flap {
+      transform: rotateX(180deg);
+    }
+
+    .open .letter {
+      transform: translateY(-60px);
+      opacity: 1;
+    }
+
+    .hint {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="envelope" id="envelope">
+
+      <div class="flap"></div>
+
+      <div class="letter">
+        <strong>Hi!</strong><br><br>Hi Aeron Marcial, I just wanted to say that I like you, and I have since grade 11. Want to know why? No clue, HAHAHA. Seriously, though, it's because you're so makulit! I honestly thought I'd find you annoying, but your kakulitan is actually really cute, HAHA. You're kind, caring, and family-oriented, too. Plus, you notice even the smallest details – and that's one of the things I like most about you. Also, you have beautiful eyes. 😅 I know you like someone else, and I'm aware I'll never measure up to her, but I just really wanted to tell you how I feel. Happy Valentine's Day! 💘<br><br>Anonymous girl: Her first name ends in 'E'.
+      </div>
+
+      <div class="bottom"></div>
+
+    </div>
+
+    <div class="hint">Click the red envelope ❤️</div>
+
+
+  <script>
+    const envelope = document.getElementById("envelope");
+
+    envelope.addEventListener("click", () => {
+      envelope.classList.toggle("open");
+    });
+  </script>
+
+</body>
+</html>
